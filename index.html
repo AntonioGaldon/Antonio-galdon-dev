@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antonio Galdón — Desarrollo Digital & IA</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet" />
+
+  <!-- Nuestro CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- Cursor personalizado -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Barra de progreso de scroll -->
+  <div id="progress-bar"></div>
+
+  <!-- ── Nav ── -->
+ <nav>
+  <div class="nav-logo">AG</div>
+
+  <!-- Links normales (visibles en escritorio) -->
+  <div class="nav-links" id="nav-links">
+    <a href="#fade-section" class="nav-link">Servicios</a>
+    <a href="#cards-section" class="nav-link">Qué hago</a>
+    <a href="#parallax-section" class="nav-link">Proceso</a>
+    <a href="#cta-section" class="nav-link">Contacto</a>
+  </div>
+
+  <!-- Botón hamburguesa (visible solo en móvil) -->
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- Overlay oscuro detrás del menú móvil -->
+<div class="nav-overlay" id="nav-overlay"></div>
+
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 1 — HERO
+  ══════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg-num">AG</div>
+    <p class="hero-label">// Desarrollo Digital & Inteligencia Artificial</p>
+    <h1 class="hero-title">
+      <span class="line"><span>ANTONIO</span></span>
+      <span class="line"><span>GALDÓN</span></span>
+      <span class="line"><span style="color:var(--accent)">DEV</span></span>
+    </h1>
+    <p class="hero-sub">Transformo negocios locales en máquinas de captación de clientes. Webs, landing pages, chatbots con IA y aplicaciones a medida.</p>
+    <button class="hero-cta" onclick="document.getElementById('cta-section').scrollIntoView({behavior:'smooth'})">Ver servicios →</button>
+    <p class="hero-scroll-hint">Scroll para continuar</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 2 — PROPUESTA DE VALOR
+  ══════════════════════════════════════════ -->
+  <section id="fade-section">
+    <div class="section-tag">// Lo que me diferencia</div>
+    <p class="big-text" id="reveal-text">
+      No solo creo webs. Construyo sistemas digitales que trabajan por ti mientras duermes, captan leads y convierten visitas en clientes reales.
+    </p>
+    <div class="two-cols">
+      <div class="anim-fade col-box">
+        <p class="col-label" style="color:var(--accent)">Captación automática</p>
+        <p class="col-desc">Identifico negocios con potencial mediante scraping de Google Maps y outreach personalizado con IA. Tus próximos clientes, en tu bandeja de entrada.</p>
+      </div>
+      <div class="anim-fade col-box">
+        <p class="col-label" style="color:var(--accent2)">Resultados medibles</p>
+        <p class="col-desc">Cada proyecto incluye un dashboard donde puedes ver en tiempo real tus citas, reservas y métricas clave. Datos claros, decisiones mejores.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 3 — SERVICIOS
+  ══════════════════════════════════════════ -->
+  <section id="cards-section">
+    <div class="cards-header">
+      <h2>Mis<br><span style="color:var(--accent)">Servicios</span></h2>
+      <p>Soluciones digitales completas para negocios que quieren crecer de verdad.</p>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>Páginas Web</h3>
+        <p>Sitios rápidos, modernos y optimizados para SEO. Diseñados para convertir visitantes en clientes desde el primer segundo.</p>
+        <div class="card-line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>Landing Pages</h3>
+        <p>Páginas de aterrizaje con un único objetivo: que el usuario actúe. Cada elemento está diseñado para maximizar la conversión.</p>
+        <div class="card-line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>Chatbots con IA</h3>
+        <p>Atención al cliente 24/7, reserva de citas y gestión de espacios de forma automática. Tu negocio nunca cierra.</p>
+        <div class="card-line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-num">04</div>
+        <h3>PWA para Empresas</h3>
+        <p>Aplicaciones web progresivas que funcionan como apps nativas en cualquier dispositivo. Sin pasar por el App Store.</p>
+        <div class="card-line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-num">05</div>
+        <h3>Dashboard de Gestión</h3>
+        <p>Panel de control personalizado para visualizar, editar y gestionar citas, reservas y datos de clientes en tiempo real.</p>
+        <div class="card-line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-num">06</div>
+        <h3>Captación de Leads</h3>
+        <p>Identifico negocios potenciales mediante scraping y automatizo el outreach con mensajes personalizados por IA. Pipeline de ventas en piloto automático.</p>
+        <div class="card-line"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 4 — PARALLAX / FILOSOFÍA
+  ══════════════════════════════════════════ -->
+  <section id="parallax-section">
+    <div class="parallax-bg"></div>
+    <div class="parallax-layer-1"></div>
+    <div class="parallax-layer-2"></div>
+    <div class="dots-layer" id="dots-layer"></div>
+    <div class="parallax-content">
+      <h2>DIGITAL<em>PRIMERO</em></h2>
+      <p>// Tu negocio merece tecnología que trabaje por ti</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 5 — PROCESO (PIN HORIZONTAL)
+  ══════════════════════════════════════════ -->
+  <section id="pin-section">
+    <div id="pin-wrapper">
+
+      <div class="pin-slide">
+        <div class="pin-num">01</div>
+        <div class="pin-content">
+          <h2>ANÁLISIS<br>INICIAL</h2>
+          <p>Estudiamos tu negocio, tu competencia y tus objetivos. Sin un diagnóstico claro, no hay solución real.</p>
+        </div>
+      </div>
+
+      <div class="pin-slide">
+        <div class="pin-num">02</div>
+        <div class="pin-content">
+          <h2>DISEÑO<br>Y BUILD</h2>
+          <p>Desarrollo la solución a medida: web, chatbot, dashboard o lo que tu negocio necesite. Rápido y sin rodeos.</p>
+        </div>
+      </div>
+
+      <div class="pin-slide">
+        <div class="pin-num">03</div>
+        <div class="pin-content">
+          <h2>LANZAMIENTO<br>Y DATOS</h2>
+          <p>Publicamos, conectamos las herramientas y empezamos a medir. El dashboard entra en funcionamiento desde el día uno.</p>
+        </div>
+      </div>
+
+      <div class="pin-slide">
+        <div class="pin-num" style="color:rgba(0,0,0,.1)">04</div>
+        <div class="pin-content">
+          <h2>ESCALA<br>Y CRECE</h2>
+          <p>Optimizamos según los datos reales. Lo que funciona se potencia, lo que no se cambia. Crecimiento continuo.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 6 — NÚMEROS
+  ══════════════════════════════════════════ -->
+  <section id="counter-section">
+    <div class="section-tag" style="margin-bottom:60px">// En números</div>
+    <div class="counters">
+      <div class="counter-item">
+        <div class="counter-val" data-target="30">0</div>
+        <div class="counter-divider"></div>
+        <div class="counter-label">Proyectos entregados</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-val" data-target="100">0</div>
+        <div class="counter-divider"></div>
+        <div class="counter-label">% Compromiso</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-val" data-target="24">0</div>
+        <div class="counter-divider"></div>
+        <div class="counter-label">h/día disponible</div>
+      </div>
+      <div class="counter-item">
+        <div class="counter-val" data-target="5">0</div>
+        <div class="counter-divider"></div>
+        <div class="counter-label">Años de experiencia</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECCIÓN 7 — CTA FINAL
+  ══════════════════════════════════════════ -->
+  <section id="cta-section">
+    <h2 class="cta-title">
+      ¿HABLAMOS<br>DE TU<br><span style="color:var(--accent)">PROYECTO?</span>
+    </h2>
+    <a href="mailto:hola@antoniogaldon.com" class="cta-btn"><span>ESCRIBEME →</span></a>
+    <p class="cta-footer">Antonio Galdón — Desarrollo Digital & IA</p>
+  </section>
+
+  <!-- ── GSAP ── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Nuestro JS -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

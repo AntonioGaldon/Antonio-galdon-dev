@@ -1,0 +1,745 @@
+/* ═══════════════════════════════════════════════
+   styles.css
+   Todos los estilos de la página
+═══════════════════════════════════════════════ */
+
+/* ── Reset y variables globales ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:           #0a0a0f;
+  --bg2:          #0f0f1a;
+  --accent:       #e8ff47;
+  --accent2:      #ff4778;
+  --white:        #f0f0f0;
+  --gray:         #555;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: auto; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── Cursor personalizado ── */
+#cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+#cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: difference;
+}
+
+/* ── Barra de progreso ── */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--accent);
+  z-index: 1000;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+/* ── Navegación ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 48px;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: .85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .6;
+  transition: opacity .3s;
+}
+
+.nav-links a:hover { opacity: 1; }
+
+/* ── SECCIÓN 1 — Hero ── */
+#hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 10vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-num {
+  position: absolute;
+  right: -2vw;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 40vw;
+  color: rgba(255,255,255,.025);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+.hero-label {
+  font-size: .75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  opacity: 0; /* animado por JS */
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 13vw, 14rem);
+  line-height: .92;
+}
+
+.hero-title .line {
+  display: block;
+  overflow: hidden;
+}
+
+.hero-title .line span {
+  display: block;
+  transform: translateY(110%); /* animado por JS */
+}
+
+.hero-sub {
+  margin-top: 32px;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--gray);
+  max-width: 360px;
+  line-height: 1.7;
+  opacity: 0; /* animado por JS */
+}
+
+.hero-cta {
+  margin-top: 48px;
+  padding: 16px 40px;
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  font-size: .9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  cursor: none;
+  opacity: 0; /* animado por JS */
+  transition: background .3s;
+}
+
+.hero-cta:hover { background: #fff; }
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  right: 48px;
+  font-size: .7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  writing-mode: vertical-rl;
+  opacity: 0; /* animado por JS */
+}
+
+/* ── SECCIÓN 2 — Word Reveal ── */
+#fade-section {
+  padding: 14vh 10vw;
+  background: var(--bg2);
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: .7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 6px 14px;
+  margin-bottom: 48px;
+}
+
+.big-text {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 7rem);
+  line-height: 1.05;
+  max-width: 900px;
+}
+
+/* Las palabras se crean dinámicamente en JS */
+.big-text .word {
+  display: inline-block;
+  overflow: hidden;
+  margin-right: .25em;
+}
+
+.big-text .word span { display: inline-block; }
+
+.two-cols {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 700px;
+}
+
+.col-box {
+  padding: 32px;
+  border: 1px solid #1e1e2e;
+}
+
+.col-label {
+  font-size: .75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.col-desc {
+  color: var(--gray);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
+.anim-fade { opacity: 0; } /* estado inicial para JS */
+
+/* ── SECCIÓN 3 — Tarjetas ── */
+#cards-section {
+  padding: 14vh 10vw;
+}
+
+.cards-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 60px;
+}
+
+.cards-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 5rem);
+}
+
+.cards-header p {
+  color: var(--gray);
+  font-size: .9rem;
+  max-width: 260px;
+  text-align: right;
+  line-height: 1.6;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background: var(--bg2);
+  padding: 40px 32px;
+  border: 1px solid #1e1e2e;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity .4s;
+}
+
+.card:hover::before { opacity: .06; }
+
+.card-num {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: rgba(255,255,255,.07);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: .5px;
+}
+
+.card p {
+  color: var(--gray);
+  font-size: .9rem;
+  line-height: 1.7;
+}
+
+.card-line {
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  margin-top: 28px;
+  transition: width .3s;
+}
+
+.card:hover .card-line { width: 100%; }
+
+/* ── SECCIÓN 4 — Parallax ── */
+#parallax-section {
+  height: 80vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.parallax-bg {
+  position: absolute;
+  inset: -30%;
+  background: radial-gradient(ellipse at 30% 50%, #1a0a2e 0%, #0a0a0f 70%);
+  will-change: transform;
+}
+
+.parallax-layer-1 {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 60% 40%, rgba(232,255,71,.08) 0%, transparent 60%);
+  will-change: transform;
+}
+
+.parallax-layer-2 {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 30% 70%, rgba(255,71,120,.06) 0%, transparent 50%);
+  will-change: transform;
+}
+
+.dots-layer {
+  position: absolute;
+  inset: -20%;
+  will-change: transform;
+}
+
+.dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: .4;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.parallax-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 9rem);
+  letter-spacing: 2px;
+  line-height: .95;
+}
+
+.parallax-content h2 em {
+  font-style: normal;
+  color: var(--accent);
+  display: block;
+}
+
+.parallax-content p {
+  margin-top: 24px;
+  color: var(--gray);
+  font-size: 1rem;
+}
+
+/* ── SECCIÓN 5 — PIN Horizontal ── */
+#pin-section {
+  background: var(--accent);
+  color: #000;
+}
+
+#pin-wrapper {
+  display: flex;
+  width: 400vw;
+}
+
+.pin-slide {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 10vw;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.pin-slide:nth-child(2) { background: var(--accent2); color: #fff; }
+.pin-slide:nth-child(3) { background: #0a0a0f; color: var(--white); }
+.pin-slide:nth-child(4) { background: #fff; color: #000; }
+
+.pin-num {
+  font-family: var(--font-display);
+  font-size: 12rem;
+  line-height: 1;
+  opacity: .12;
+  position: absolute;
+}
+
+.pin-content { position: relative; }
+
+.pin-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 8rem);
+  line-height: .95;
+}
+
+.pin-content p {
+  font-size: 1rem;
+  max-width: 420px;
+  margin-top: 20px;
+  opacity: .7;
+  line-height: 1.7;
+}
+
+/* ── SECCIÓN 6 — Contadores ── */
+#counter-section {
+  padding: 14vh 10vw;
+  background: var(--bg);
+}
+
+.counters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+.counter-val {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 7rem);
+  color: var(--accent);
+  line-height: 1;
+}
+
+.counter-label {
+  font-size: .8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 12px;
+}
+
+.counter-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  margin: 16px auto 0;
+}
+
+/* ── SECCIÓN 7 — CTA Final ── */
+#cta-section {
+  padding: 20vh 10vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(232,255,71,.07) 0%, transparent 70%);
+}
+
+.cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 11rem);
+  line-height: .9;
+  position: relative;
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 56px;
+  padding: 20px 60px;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 4px;
+  text-decoration: none;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: color .4s;
+}
+
+.cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s ease;
+}
+
+.cta-btn:hover::before { transform: scaleX(1); }
+.cta-btn span { position: relative; }
+.cta-btn:hover { color: #000; }
+
+.cta-footer {
+  margin-top: 80px;
+  color: var(--gray);
+  font-size: .75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+/* ── Botón hamburguesa (oculto en escritorio) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: none;
+  padding: 8px;
+  z-index: 200;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animación de las tres líneas → X al abrir */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Overlay oscuro */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 98;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+}
+
+/* ── Botón hamburguesa (oculto en escritorio) ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: none;
+  padding: 8px;
+  z-index: 200;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 98;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+}
+
+/* ── Responsive móvil ── */
+@media (max-width: 768px) {
+
+  /* Mostrar hamburguesa, ocultar links horizontales */
+  .hamburger { display: flex; }
+
+  /* El menú se coloca fuera de pantalla a la derecha */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75vw;
+    max-width: 300px;
+    height: 100vh;
+    background: #0f0f1a;
+    border-left: 1px solid #1e1e2e;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 40px;
+    gap: 32px;
+    z-index: 99;
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    opacity: 1;
+  }
+
+  /* Hero */
+#hero {
+  padding: 0 6vw;
+  padding-top: 80px;
+  justify-content: flex-start;
+  height: auto;              /* ya no ocupa toda la pantalla */
+  min-height: unset;         /* pero como mínimo sí */
+  padding-bottom: 100px;
+}
+
+.hero-title {
+  font-size: clamp(4rem, 22vw, 7rem);   /* un poco más grande */
+}
+
+.hero-label {
+  margin-bottom: 12px;
+  font-size: .65rem;
+}
+
+.hero-sub {
+  font-size: .95rem;
+  margin-top: 16px;
+  max-width: 100%;           /* usa todo el ancho disponible */
+}
+
+.hero-cta {
+  margin-top: 28px;
+}
+
+.hero-scroll-hint {
+  display: none;
+}
+
+/* Sección 2 — Lo que me diferencia */
+#fade-section {
+  padding: 60px 6vw;
+}
+
+.big-text {
+  font-size: clamp(1.8rem, 8vw, 3rem);
+}
+
+.two-cols {
+  grid-template-columns: 1fr;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.col-box {
+  padding: 20px;
+}
+
+  /* Resto de ajustes */
+  .cards-grid { grid-template-columns: 1fr; }
+  .counters { grid-template-columns: repeat(2, 1fr); }
+  .cards-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .cards-header p { text-align: left; }
+  .two-cols { grid-template-columns: 1fr; }
+  nav { padding: 20px 24px; }
+}
