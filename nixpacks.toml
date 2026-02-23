@@ -2,4 +2,5 @@
 cmds = ["npm install -g serve"]
 
 [start]
-cmd = "serve -s . -l $PORT"
+cmd = "serve . -l 8080"
+
